@@ -45,7 +45,7 @@ def test_relationships():
     wait.until(EC.visibility_of_element_located(Second_First_name))
     driver.find_element(*Second_First_name).send_keys("Igor, Again")
     driver.find_element(*Pre_fieldef_input).clear()
-    time.sleep(5)
+
 
 
 def test_Radio_Buttons():
@@ -64,8 +64,36 @@ def test_Radio_Buttons():
     driver.find_element(*Multi_one).click()
     driver.find_element(*Multi_two).click()
     driver.find_element(*Pre_button).click()
-    time.sleep(5)
 
 
-    time.sleep(3)
+
+def test_Buttons():
+    # PRECONDITIONS
+    driver.get("https://testkru.com/Elements/Buttons")
+    driver.maximize_window()
+    Double_click_Button = driver.find_element("xpath", '//button[@id = "doubleClick"]')
+    Right_click_Button = driver.find_element('xpath', '//button[@id = "rightClick"]')
+    Left_click_button = driver.find_element("xpath", '//button[@id = "leftClick"]')
+    Hover_button = driver.find_element('xpath', '//button[@id = "colorChangeOnHover"]')
+    New_tab_button = driver.find_element("xpath", '//button[@id = "openNewTab"]')
+    Same_tab_button = driver.find_element("xpath", '//button[@id = "loadNewPageInSameTab"]')
+
+
+    # ACTION
+
+    action.double_click(Double_click_Button).pause(1)\
+    .context_click(Right_click_Button).pause(1)\
+    .click(Left_click_button).pause(2)\
+    .move_to_element(Hover_button).perform()
+
+    New_tab_button.click()
+    tabs = driver.window_handles
+    driver.switch_to.window(tabs[1])
+
+    driver.close()
+    tab = driver.window_handles
+    driver.switch_to.window(tab[0])
+    Same_tab_button.click()
+
+
 
