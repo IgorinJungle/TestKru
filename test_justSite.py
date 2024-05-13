@@ -13,7 +13,7 @@ from selenium.webdriver import Keys
 
 
 options = webdriver.ChromeOptions()
-options.add_argument("--headless")
+# options.add_argument("--headless")
 # options.add_argument("--disable-cache")
 # options.add_argument("--height, 800")
 # options.add_argument("--width, 600")
@@ -48,5 +48,23 @@ def test_relationships():
     time.sleep(5)
 
 
+def test_Radio_Buttons():
+# PRECONDITIONS
+    driver.get("https://testkru.com/Elements/RadioButtons")
+    Single_select_button = ("xpath", '//input[@id = "secondSelect1"]')
+    Multi_one = ('xpath', '//input[@id = "firstSelect2"]')
+    Multi_two = ("xpath", '//input[@id = "secondSelect2"]')
+    Pre_button = ('xpath', '//input[@id = "secondSelect5"]')
 
+# ACTION
+
+    driver.find_element(*Single_select_button).click()
+    assert driver.find_element(*Single_select_button).is_selected()
+    driver.find_element(*Multi_one).click()
+    driver.find_element(*Multi_two).click()
+    driver.find_element(*Pre_button).click()
+    time.sleep(5)
+
+
+    time.sleep(3)
 
