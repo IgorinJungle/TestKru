@@ -1,0 +1,22 @@
+name: "Testkru"
+on: push
+
+jobs:
+  test_complete:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Get checkouts
+      uses: action/checkouts@v4
+    - name: Get Python
+      uses: action/setup-python@v4
+      with:
+        python-version: "3.11.2"
+    - name: Get Chrome
+      run: sudo apt-get install google-chrome-stable
+    - name: Get requirement
+      run: pip3 install -r requirements.txt
+    - name: Run Test
+      run: pytest
+    
+
