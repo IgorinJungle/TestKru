@@ -7,9 +7,9 @@ jobs:
 
     steps:
     - name: Get checkouts
-      uses: action/checkouts@v4
+      uses: actions/checkouts@v4
     - name: Get Python
-      uses: action/setup-python@v4
+      uses: actions/setup-python@v4
       with:
         python-version: "3.11.2"
     - name: Get Chrome
