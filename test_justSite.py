@@ -13,7 +13,7 @@ from selenium.webdriver import Keys
 
 
 options = webdriver.ChromeOptions()
-# options.add_argument("--headless")
+options.add_argument("--headless")
 # options.add_argument("--disable-cache")
 # options.add_argument("--height, 800")
 # options.add_argument("--width, 600")
