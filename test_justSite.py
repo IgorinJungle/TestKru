@@ -96,4 +96,24 @@ def test_Buttons():
     Same_tab_button.click()
 
 
+def test_drag_and_drop():
+    # PRECONDITIONS
+    driver.get("https://testkru.com/Interactions/DragAndDrop")
+    driver.maximize_window()
+    box1 = driver.find_element('xpath', '(//div[@class = "box"])[1]')
+    box2 = driver.find_element('xpath', '(//div[@class = "box"])[2]')
+    box3 = driver.find_element('xpath', '(//div[@class = "box"])[3]')
+    DropZone1 = driver.find_element('xpath', '//div[@id = "dropZone1"]')
+    DropZone2 = driver.find_element("xpath", '//div[@id = "dropZone3"]')
+
+    # ACTION
+
+    action.drag_and_drop(box1, DropZone1).pause(2)\
+    .drag_and_drop(box2, DropZone2)\
+    .drag_and_drop(box3, DropZone1)\
+    .perform()
+
+    time.sleep(5)
+
+
 
