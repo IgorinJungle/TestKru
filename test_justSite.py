@@ -117,3 +117,18 @@ def test_drag_and_drop():
 
 
 
+def test_frames():
+    driver.get("https://testkru.com/Interactions/Frames")
+
+    driver.switch_to.frame("frame2")
+    driver.execute_script("window.scrollTo(150,650)")
+    driver.switch_to.default_content()
+    driver.find_element('xpath', '//a[text() = "codekru"]').click()
+    time.sleep(5)
+    tab = driver.window_handles
+    driver.switch_to.window(tab[1])
+    driver.close()
+    backtab = driver.window_handles
+    driver.switch_to.window(backtab[0])
+    time.sleep(3)
+
