@@ -132,3 +132,21 @@ def test_frames():
     driver.switch_to.window(backtab[0])
     time.sleep(3)
 
+
+
+def test_keys():
+    driver.get("https://testkru.com/Interactions/KeyboardActions")
+    action.send_keys("qwerty").pause(2).send_keys(Keys.BACKSPACE).perform()
+
+
+
+def test_assert_text():
+    driver.get("https://testkru.com/Interactions/DisappearingElements")
+    text1 = driver.find_element('xpath', '//p[@id = "disappearing5sec"]').text
+    assert text1 == "This message will disappear after 5 seconds", "NOT EQUAL"
+
+    text2 = driver.find_element('xpath', '//p[@id = "disappearing10sec"]').text
+    assert text2 == "This message will disappear after 10 seconds", "NOT EQUAL"
+
+    text3 = driver.find_element('xpath', '//p[@id = "disappearing15sec"]').text
+    assert text3 == "This message will disappear after 15 seconds", "NOT EQUAL"
